@@ -4,3 +4,7 @@ spring:
     driver-class-name: org.sqlite.JDBC
     username: admin
     password: admin
+
+  flyway:
+    locations: classpath:migration/flyway
+    clean-on-validation-error: true
