@@ -5,6 +5,7 @@ spring:
     username: admin
     password: admin
 
+  # only for development (on production must be commented)
   flyway:
-    locations: classpath:migration/flyway
     clean-on-validation-error: true
+    clean-disabled: false
