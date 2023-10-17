@@ -1,3 +1,6 @@
+sql:
+  dialect: SQLITE
+
 spring:
   datasource:
     url: jdbc:sqlite:./sjf.db
