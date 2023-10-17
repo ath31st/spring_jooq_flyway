@@ -6,7 +6,6 @@ import lombok.RequiredArgsConstructor;
 import org.jooq.DSLContext;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.support.TransactionTemplate;
-import sidim.doma.sjf.db.tables.daos.CityDao;
 import sidim.doma.sjf.db.tables.pojos.City;
 
 @Service
@@ -14,15 +13,12 @@ import sidim.doma.sjf.db.tables.pojos.City;
 public class CityService {
   private final DSLContext dsl;
   private final TransactionTemplate transactionTemplate;
-  private final CityDao cityDao = new CityDao();
 
   void insertCity(CityDto dto) {
-    City city = new City();
-    city.setName(dto.name());
-    city.setPopulation(dto.population());
-    city.setDateOfFoundation(dto.dateOfFoundation());
-
-    cityDao.insert(city);
+    dsl.insertInto(CITY)
+        .columns(CITY.NAME, CITY.DATE_OF_FOUNDATION, CITY.POPULATION)
+        .values(dto.name(), dto.dateOfFoundation(), dto.population())
+        .execute();
   }
 
   City findByName(String cityName) {
