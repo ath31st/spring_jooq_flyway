@@ -8,7 +8,6 @@ import org.jooq.DSLContext;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.support.TransactionTemplate;
 import sidim.doma.sjf.db.tables.daos.CityDao;
-import sidim.doma.sjf.db.tables.pojos.City;
 
 @Service
 @RequiredArgsConstructor
@@ -17,6 +16,7 @@ public class CityService {
   private final TransactionTemplate transactionTemplate;
   private final Configuration jooqConfiguration;
   private final CityDao cityDao;
+  private final CityRecordMapper mapper;
 
   void insertCity(CityDto dto) {
 //    City c = new City();
@@ -32,11 +32,11 @@ public class CityService {
         .execute();
   }
 
-  City findByName(String cityName) {
+  sidim.doma.sjf.City findByName(String cityName) {
     return dsl.select(CITY)
         .from(CITY)
         .where(CITY.NAME.eq(cityName))
-        .fetchOptionalInto(City.class)
+        .fetchOptional(mapper)
         .orElseThrow();
   }
 }
