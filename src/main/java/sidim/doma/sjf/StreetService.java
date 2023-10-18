@@ -5,12 +5,12 @@ import static sidim.doma.sjf.db.Tables.STREET;
 import lombok.RequiredArgsConstructor;
 import org.jooq.DSLContext;
 import org.springframework.stereotype.Service;
-import sidim.doma.sjf.db.tables.pojos.Street;
 
 @Service
 @RequiredArgsConstructor
 public class StreetService {
   private final DSLContext dsl;
+  private final StreetRecordMapper mapper;
 
   public void insertStreet(StreetDto dto) {
     dsl.insertInto(STREET)
@@ -19,11 +19,11 @@ public class StreetService {
         .execute();
   }
 
-  public Street findByName(String name) {
+  public sidim.doma.sjf.Street findByName(String name) {
     return dsl.select(STREET)
         .from(STREET)
         .where(STREET.NAME.eq(name))
-        .fetchOptionalInto(Street.class)
+        .fetchOptional(mapper)
         .orElseThrow();
   }
 }
