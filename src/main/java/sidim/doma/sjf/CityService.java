@@ -39,4 +39,12 @@ public class CityService {
         .fetchOptional(mapper)
         .orElseThrow();
   }
+
+  public City findById(Integer cityId) {
+    return dsl.select(CITY)
+        .from(CITY)
+        .where(CITY.ID.eq(cityId))
+        .fetchOptional(mapper)
+        .orElseThrow();
+  }
 }
