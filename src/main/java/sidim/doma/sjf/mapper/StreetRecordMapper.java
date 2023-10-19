@@ -1,10 +1,13 @@
-package sidim.doma.sjf;
+package sidim.doma.sjf.mapper;
 
 import lombok.RequiredArgsConstructor;
 import org.jooq.Record1;
 import org.jooq.RecordMapper;
 import org.springframework.stereotype.Component;
 import sidim.doma.sjf.db.tables.records.StreetRecord;
+import sidim.doma.sjf.model.City;
+import sidim.doma.sjf.model.Street;
+import sidim.doma.sjf.service.CityService;
 
 @Component
 @RequiredArgsConstructor

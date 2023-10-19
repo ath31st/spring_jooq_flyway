@@ -1,4 +1,4 @@
-package sidim.doma.sjf;
+package sidim.doma.sjf.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -8,6 +8,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+import sidim.doma.sjf.dto.StreetDto;
+import sidim.doma.sjf.model.Street;
+import sidim.doma.sjf.service.StreetService;
 
 @RestController
 @RequiredArgsConstructor

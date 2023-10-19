@@ -1,4 +1,4 @@
-package sidim.doma.sjf;
+package sidim.doma.sjf.config;
 
 import java.sql.DriverManager;
 import java.sql.SQLException;

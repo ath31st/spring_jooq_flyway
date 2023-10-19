@@ -1,4 +1,4 @@
-package sidim.doma.sjf;
+package sidim.doma.sjf.model;
 
 import java.time.LocalDate;
 

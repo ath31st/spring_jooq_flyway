@@ -1,10 +1,13 @@
-package sidim.doma.sjf;
+package sidim.doma.sjf.service;
 
 import static sidim.doma.sjf.db.Tables.STREET;
 
 import lombok.RequiredArgsConstructor;
 import org.jooq.DSLContext;
 import org.springframework.stereotype.Service;
+import sidim.doma.sjf.mapper.StreetRecordMapper;
+import sidim.doma.sjf.dto.StreetDto;
+import sidim.doma.sjf.model.Street;
 
 @Service
 @RequiredArgsConstructor
@@ -19,7 +22,7 @@ public class StreetService {
         .execute();
   }
 
-  public sidim.doma.sjf.Street findByName(String name) {
+  public Street findByName(String name) {
     return dsl.select(STREET)
         .from(STREET)
         .where(STREET.NAME.eq(name))
