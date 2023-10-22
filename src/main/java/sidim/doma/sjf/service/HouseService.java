@@ -6,7 +6,8 @@ import lombok.RequiredArgsConstructor;
 import org.jooq.DSLContext;
 import org.springframework.stereotype.Service;
 import sidim.doma.sjf.dto.HouseDto;
-import sidim.doma.sjf.model.Street;
+import sidim.doma.sjf.mapper.HouseRecordMapper;
+import sidim.doma.sjf.model.House;
 
 @Service
 @RequiredArgsConstructor
@@ -21,7 +22,7 @@ public class HouseService {
         .execute();
   }
 
-  public Street findByNumber(Integer houseNumber) {
+  public House findByNumber(Integer houseNumber) {
     return dsl.select(HOUSE)
         .from(HOUSE)
         .where(HOUSE.HOUSE_NUMBER.eq(houseNumber))
